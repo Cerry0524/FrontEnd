@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>山與海的界線</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: black;
+            background: rgb(0, 0, 0);
+            transition: background-color 1s;
+            /* position: relative; */
+            font-family: "微軟正黑體", "Microsoft JhengHei UI";
+            overflow-x: hidden;
         }
 
-        /* CSS 設定背景影片 */
+
         #video-background {
-            position: fixed;
-            /* 改回 "fixed" */
+            position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
             overflow: hidden;
             z-index: -1;
-            filter: contrast(0.8);
         }
 
         #video-background iframe {
@@ -29,19 +31,20 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: calc(100vw * 9/16);
+            height: calc(100vw * 10 / 16);
             object-fit: cover;
             pointer-events: none;
         }
 
         .title {
-            font-family: "微軟正黑體";
+
             align-content: center;
             margin-top: 10%;
             color: aqua;
             font-size: 50px;
             text-shadow: 2px 2px 6px rgb(0, 0, 0);
-            background: linear-gradient(210deg, rgba(56, 218, 255, 0.0) 70%, rgba(56, 218, 255, 0.85) 90%, rgba(0, 192, 10, 0.85) 95%);
+            background: linear-gradient(210deg, rgba(56, 218, 255, 0.0) 50%, rgba(56, 218, 255, 0.85) 75%, rgba(0, 192, 10, 0.85) 95%, rgba(56, 218, 255, 0.0) 100%);
+
         }
 
         .navbar {
@@ -49,7 +52,11 @@
         }
 
         .imgbg {
-            background: linear-gradient(270deg, rgba(0, 15, 91, 0.2) 40%, rgba(7, 0, 48, 0.85) 75%, rgba(0, 0, 0, 100) 95%);
+            background: linear-gradient(270deg, rgba(0, 15, 91, 0.2) 40%, rgba(7, 0, 48, 0.85) 75%, rgba(0, 0, 0, 0.9) 95%);
+        }
+
+        .textbg {
+            background: linear-gradient(80deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0.85) 75%, rgba(0, 0, 0, 0.9) 95%);
         }
 
         #map {
@@ -58,9 +65,35 @@
             height: calc(80vw * 1/2);
         }
 
-        img {
+        #Mapimg {
             width: 100%;
-            height: calc(100vw * 1/2);
+            height: 100%;
+        }
+
+        .viewimg {
+            width: 85%;
+            box-shadow: 4px 4px 10px rgba(121, 255, 197, 0.634);
+
+        }
+
+        .viewtextbg {
+            background: linear-gradient(225deg, rgba(3, 97, 203, 0.822), rgba(0, 0, 255, 0.8));
+            box-shadow: 2px 2px 4px rgb(64, 172, 255);
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -74,60 +107,157 @@
             allowfullscreen></iframe>
     </div>
 
-    <div class="container-fluid mt-3">
+    <div class="container-fulid">
         <div class="row title text-light">
-            <div class="col ">山與海的界線</a>
+            <div class="col navbar-brand fw-bold" data-url="default">山與海的界線
             </div>
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
-        <div class="container-fluid ">
-            <a class="navbar-brand" data-url="story">古今歷史</a>
-        </div>
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="#">淡水八景</a>
-        </div>
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="#">推薦美食</a>
-        </div>
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="#">交通網絡</a>
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">滬尾（淡水）</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder active" data-url="default">關於淡水</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder" data-url="story">古今歷史</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder" data-url="view">淡水八景</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder" data-url="map" onclick="map()">交通網絡</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="container-fluid mt-3">
-        <div class="row display">
-            <div class="col text-light bg-dark">
-                吃飯權力歌手成果，能源網站走出手冊宅宅，形成上有影視草魚全部指導大多經常住房差距密碼很大之一，經銷商還能改進暴力網頁班，五年營銷英雄，別的日子基金有時考察主機目錄無聊不過，日誌公告更新別的有個容易，優惠列表到了這場並且工資到處人力，筆者自我走向紡織加盟具。F
-            </div>
+    <div class="container mt-3">
+        <div class="row  row-cols-md-2 row-cols-1 display ">
         </div>
-        <div class="row imgbg">
-            <div class="offset-2 col ">
-                <img src="./img/tamsui_map.png">
-            </div>
-        </div>
+    </div>
+
+    <div class="container mt-3">
         <div class="row">
-            <div class="col">
-                <div id="map"></div>
+            <div id="map" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12 mt-3 mb-5">
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./img/story01.jpg" alt="淡水紅毛城" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水紅毛城</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story02.jpg" alt="關渡大橋" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">關渡大橋</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story03.jpg" alt="淡水老街" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水老街</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story04.jpg" alt="牛津學堂" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">牛津學堂</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story05.jpg" alt="小白宮" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">小白宮</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story06.jpg" alt="滬尾砲臺" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">滬尾砲臺</h3>
+                            </div>
+
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/story07.jpg" alt="淡水禮拜堂" class="d-block" style=" width:100%;height:35vh;">
+                            <div class="carousel-caption">
+                                <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水禮拜堂</h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
         $(document).ready(function () {
             let apiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdLK_67-9JhkMDBVfREV0rBbhqorwxzLk&callback=initMap';
 
-            $(window).on('scroll', function () {
-                let videoBackground = $('#video-background');
-                let divElement = $('.title');
-                let scrollPosition = $(window).scrollTop();
-                videoBackground.css('top', scrollPosition * 0.5 + 'px');
-                divElement.css('marginTop', scrollPosition * 0.7 + 'px');
+            // 當視窗大小改變時重新計算影片高度
+            $(window).on('resize', function () {
+                adjustVideoHeight();
             });
 
+            function adjustVideoHeight() {
+                let windowHeight = $(window).height();
+                $('#video-background').css('height', windowHeight + 'px');
+            }
+
+            adjustVideoHeight(); // 初始化影片高度
+
+            $(window).scroll(function () {
+                // 計算卷軸滾動的距離
+                let scrollPosition = $(window).scrollTop();
+                // 計算觸發點的位置（例如視窗高度的一半）
+                let triggerPosition = $(window).height() / 2;
+
+                if (scrollPosition > triggerPosition) {
+                    // $('body').css('background-color', 'white');
+                    $('#video-background').hide(); // 隱藏影片背景
+                    $('.navbar').css('background-color', ' rgba(0, 0, 0, 1)');
+
+                } else {
+                    // $('body').css('background-color', 'black'); 
+                    $('#video-background').show(); // 顯示影片背景
+                    $('.navbar').css('background-color', ' rgba(0, 0, 0, 0.5)');
+                }
+            });
 
             $.getScript(apiUrl)
                 .done(function () {
@@ -137,17 +267,25 @@
                     console.error('無法載入 Google Maps API。');
                 });
 
-            $(".navbar-brand").click(function () {
+            $(".nav-link").click(function () {
                 let url = $(this).data('url')
-                $.get(url+".html" ,(res) => {
-                    // console.log(res);
+                // console.log(url);
+                $.get(url + ".html", (res) => {
+                    $(".nav-link").removeClass('active')
+                    $(this).addClass('active')
                     $(".display").eq(0).html(res)
+                    if (url == 'map') {
+                        $('#map').css('display', 'block')
+                    } else {
+                        $('#map').css('display', 'none')
+                    };
                 })
-            })
-            $.post("",id,()=>{
 
-            })
+            });
 
+            $.get("default.html", (res) => {
+                $(".display").eq(0).html(res)
+            });
         });
 
         function initMap() {
@@ -164,6 +302,8 @@
                 map: map,
                 title: '標記標題'
             });
+
+
 
         }
 
