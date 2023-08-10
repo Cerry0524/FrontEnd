@@ -8,9 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: rgb(0, 0, 0);
+            background-image: linear-gradient(20deg, #2b5876 0%, #4e4376 60%, black 80%);
             transition: background-color 1s;
-            /* position: relative; */
+            position: relative;
             font-family: "微軟正黑體", "Microsoft JhengHei UI";
             overflow-x: hidden;
         }
@@ -61,8 +61,8 @@
 
         #map {
             text-align: center;
-            width: 80VW;
-            height: calc(80vw * 1/2);
+            width: 80vw;
+            height: calc(80vw * 9 /16);
         }
 
         #Mapimg {
@@ -98,7 +98,7 @@
     </style>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="510">
     <div id="video-background">
         <iframe
             src="https://www.youtube.com/embed/jMC8NyDSURU?controls=0&autoplay=1&loop=1&playlist=jMC8NyDSURU&mute=1&showinfo=0"
@@ -109,49 +109,84 @@
 
     <div class="container-fulid">
         <div class="row title text-light">
-            <div class="col navbar-brand fw-bold" data-url="default">山與海的界線
+            <div class="col navbar-brand fw-bold">山與海的界線
             </div>
         </div>
     </div>
 
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">滬尾（淡水）</a>
+            <a class="navbar-brand">滬尾（淡水）</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link fw-bolder active" data-url="default">關於淡水</a>
+                        <a href="#section1" class="nav-link fw-bolder active">關於淡水</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bolder" data-url="story">古今歷史</a>
+                        <a href="#section2" class="nav-link fw-bolder">古今歷史</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bolder" data-url="view">淡水八景</a>
+                        <a href="#section3" class="nav-link fw-bolder">淡水八景</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bolder" data-url="map" onclick="map()">交通網絡</a>
+                        <a href="#section4" class="nav-link fw-bolder">交通網絡</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-3">
+    <div class="container mt-3" id="section1">
         <div class="row  row-cols-md-2 row-cols-1 display ">
+            <div class="col text-light textbg lh-base">
+                淡水是個擁有400年歷史城鎮，古時候叫「滬尾」，今天稱淡水乃是因淡水河而來。<br>
+                清領時期，由於淡水位於淡水河出海口，因而成為北部船舶往來重要的港口，進而帶動淡水的繁榮與發展。<br>
+                數百年來，淡水接納一波波洶湧澎湃的歷史風潮，演繹一齣齣撼人心魄的歷史事件，這些富有傳奇色彩的故事，直到今天，依然保留著彌足珍貴的痕跡；以今日淡水而言，目前認列為古蹟保存近30餘處，散落在淡水的老街古巷、山野平疇，等待著我們去探尋、解讀、及體悟。<br>
+                淡水位於台北盆地的西北方，山(大屯山)河(淡水河)環繞，兼具山城與河港特色，景緻優雅，人文薈萃；隨著都市發展至今，目前行政區域共分為42個里，總面積為72.08平方公里，在112年5月設籍人口已突破19萬人；淡水區內目前擁有5所大學，3所高中職，4所國民中學，15所國民小學。
+            </div>
+            <div class="col imgbg">
+                <img src="./img/tamsui_map.png" id="Mapimg">
+            </div>
         </div>
     </div>
 
-    <div class="container mt-3">
-        <div class="row">
-            <div id="map" style="display: none;"></div>
+    <div class="container mt-3" id="section2">
+        <div class="row  row-cols-md-2 row-cols-1 display ">
+            <div class="col text-light lh-base mt-5" style="backdrop-filter: blur(20px);">
+                <h3>滬尾與淡水</h3>
+
+                「淡水」和「雞籠」曾為整北台灣的泛稱，前指淡水河流域和河口一帶地區。西班牙統治時期，將淡水河流域之地理區稱為淡水省區(Tamchui)。<br>
+                清治時期，1723年，設台灣府淡水海防廳，由彰化縣管理行政事務，並置淡水捕盜同知兼北路防務；1731年，分設淡水廳，開啟了行政區劃的始端。因天津條約，於滬尾開港設海關，開放對外貿易之後，人口逐漸往淡水河河岸的艋舺、大稻埕、滬尾等開埠、集市與居住。<br>
+                其中「滬尾」是在淡水河口東北側河岸的聚落名，也就是今日淡水的重要市街之一。<br>
+            </div>
+            <div class="col">
+                <img src="./img/Tamsui-old-1.jpg" class="rounded-circle" style="width: 90%;">
+            </div>
+            <div class="col mt-3">
+                <img src="./img/Tamsui-old-2.jpg" class="rounded" style="width: 90%;">
+            </div>
+            <div class="col text-light lh-base  mt-3" style="backdrop-filter: blur(20px);">
+                「滬尾」(臺灣話：Hóo-bué/Hōo-bé)之名可能為凱達格蘭語轉譯而來，語源為「Hobe」，是河口的意思。《臺海使槎錄》中稱「虎尾」，《重修福建臺灣府志》中稱「扈尾」，淡水福佑宮「望高樓碑誌」中稱「戶尾」。可證明不同的「Hōo-bué/bé」名稱皆為「Hobe」轉譯之結果。
+                另有說法指出，「滬」是指漁民捕魚之設施，「尾」則是指河流出海口。另有一說則是指由閩南語「雨尾」諧音演化，因為觀音山、淡水河一帶下雨，到此地後雨即停止，故名「雨尾」。<br>
+                另一說法是「石滬」是早期海邊捕魚的設施，漲潮時，海水將魚群帶進石滬內，退潮時海水從石縫中流出，魚群便留在石滬內供漁夫捕捉，早期台灣北海岸有20~30個石滬群，淡水在石滬群最尾端，故稱「滬尾」。<br>
+            </div>
+            <div class="col text-light lh-base  mt-3" style="backdrop-filter: blur(20px);">
+                也有說是源自此地在清治中期，即和簡稱為「滬」的上海通商頻繁，猶如是接續於上海後尾的城鎮，乃逐漸產生滬尾之名。<br>
+                自清治末期至日治初期，「淡水」與「滬尾」並用，都指稱淡水河河口及五虎崗一帶地區。於1909年，臺北廳滬尾支廳淡水區設立滬尾公學校、滬尾尋常高等小學校、滬尾區、滬尾街，以及以「淡水」為名的淡水稅關、淡水郵便局。<br>
+                1912年1月22日，臺北廳廳長井村大吉呈報總督府，希望解決此種名稱混亂的局面，改而統一使用「淡水」之名。經總督府批准後，於1912年9月21日正式將滬尾街改稱「淡水街」，滬尾支廳與滬尾區改稱「淡水支廳」與「淡水區」、滬尾公學校改名「淡水公學校」、以及滬尾尋常高等小學校改名「淡水尋常高等小學校」。
+            </div>
+            <div class="col  mt-3">
+                <img src="./img/Tamsui-old-3.jpg" class="img-thumbnail" style="width: 100%;">
+            </div>
+
         </div>
     </div>
 
     <!-- Carousel -->
-    <div class="container mt-3">
+    <div class="container-fulid mt-3">
         <div class="row">
             <div class="col-12 mt-3 mb-5">
                 <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -166,44 +201,44 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./img/story01.jpg" alt="淡水紅毛城" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story01.jpg" alt="淡水紅毛城" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水紅毛城</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story02.jpg" alt="關渡大橋" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story02.jpg" alt="關渡大橋" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">關渡大橋</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story03.jpg" alt="淡水老街" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story03.jpg" alt="淡水老街" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水老街</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story04.jpg" alt="牛津學堂" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story04.jpg" alt="牛津學堂" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">牛津學堂</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story05.jpg" alt="小白宮" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story05.jpg" alt="小白宮" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">小白宮</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story06.jpg" alt="滬尾砲臺" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story06.jpg" alt="滬尾砲臺" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">滬尾砲臺</h3>
                             </div>
 
                         </div>
                         <div class="carousel-item">
-                            <img src="./img/story07.jpg" alt="淡水禮拜堂" class="d-block" style=" width:100%;height:35vh;">
+                            <img src="./img/story07.jpg" alt="淡水禮拜堂" class="d-block" style=" width:100%;height:60vh;">
                             <div class="carousel-caption">
                                 <h3 class="text-white text-bg-primary fw-bold" style="opacity: 0.5;">淡水禮拜堂</h3>
                             </div>
@@ -222,11 +257,123 @@
         </div>
     </div>
 
+    <div class="container-fulid" id="section3"
+        style="background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);">
+        <div class="container mt-3 pt-4">
+            <div class="row  row-cols-md-2 row-cols-1 display ">
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg m-auto">
+                    <img src="./img/view01.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    埔頂攬勝－紅毛城、砲台、忠烈祠、埔頂區、一滴水紀念館、和平公園
+                    埔頂一帶是顧守淡水河口的美麗山崙，臺灣最早與世界接軌的門戶。從西荷時期，歷經明鄭、前清、日治，到當代，不僅是歷史風雲際會所在，也是全台最富異國色彩之地。從紅毛城、牛津學堂到小白宮，不斷述說著淡水埔頂傳奇。
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view02.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    大屯飛翠－水梘頭、三空泉、大屯溪、屯山花海
+                    大屯山蘊藏著多處怡人景緻，水梘頭、三空泉、大屯溪等美景無一不令人嚮往。遠觀大屯山，翠玉般的鮮嫩色澤彷彿就要飛向天際，向天空散開，而藍天白雲又與花海交織繾綣，真可謂是一幅天造的奇麗漫妙圖畫。
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg m m-auto">
+                    <img src="./img/view03.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    沙崙看海－漁人碼頭、沙崙海水浴場、油車口旁
+                    淡水沙崙是大台北最接近海之處，也是大台北視野最寬廣的出海口。站在漁人碼頭、沙崙海水浴場，甚至是附近的油車口，看海、看夕陽。那蒼茫的雲、無際的海，與人如此的貼近！風起雲湧，海闊天空，彷彿可以御風駕海而行。
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view04.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    水岸畫影－金色水岸、夜景
+                    淡水乃昔日的國際港埠，處處可見夾雜著異國情趣的歐風建築，山城街屋層次多變，河景燈火明滅多采。而淡水河畔，水面如鏡，水岸影象栩然躍動，隨著觀音山景四季更異，映畫著一幕幕人文與自然交會的景緻，令人流連忘返。
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view05.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    紅樹傍橋－紅樹林、關渡大橋
+                    紅樹林是生長在鹹淡水交會中的赤子，天真爛漫，隨著潮與浪搖曳在淡水河畔，其中孕育著彈塗魚、白鷺鷥、招潮蟹，處處顯生機。而綿延的紅樹林更簇擁著壯麗的關渡大橋，增添關渡橋駕馭臨風之感，美不勝收。
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view06.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    河口霞天－夕照
+                    淡水河波光粼粼，水面漸漸開展，到河口一帶注入大海，呈現海闊天空的勝景。每當黃昏時分，夕暉渲染天際，霓霞宛若彩筆，恣意綿延這天造的調色盤，所有的色彩都令觀者目眩神馳，留下「最美夕陽紅」的永恆印象。
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view07.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    觀音水月－觀音山、夜景
+                    夜裡，無論漫步淡水河畔抑或從行駛中的捷運上，隔著河看觀音山，山景倒映在深色的河面，與白日有著迥然不同的神秘景致。夜裡的淡水河宛如一位優游自在的魔術師，星空明月在其魔法下，令觀音山的剪影幻化無窮，令人嚮往。
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 viewimgbg  m-auto">
+                    <img src="./img/view08.jpg" class="viewimg img-thumbnail mx-auto d-block m-3">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7 viewtextbg lh-base text-light fw-bolder fs-5 rounded-4 mx-auto p-3 m-3"
+                    style="margin-bottom: 5px;">
+                    滬街訪古－淡水老街、寺廟
+                    滬尾街，淡水老街舊巷，蜿蜒曲折、曲徑通幽，自古即為淡水居民生活重心，記錄著淡水點滴史蹟，各有其耐人尋味的故事。探訪重建街廓、古蹟寺廟、百年老店、洋行殘跡，猶如翻閱一本淡水歷史事件簿。老街百態，永存。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="section4">
+        <div class="row row-cols-md-2 row-cols-1">
+            <div class="col text-light textbg lh-base">
+                <h2>捷運</h2>
+                <ul>
+                    <h4>台北捷運</h4>
+                    <li>
+                        <mark>淡水信義線</mark><br>
+                        竹圍站 - 紅樹林站 - 淡水站
+                    </li>
+                </ul>
+                <ul>
+                    <h4>新北捷運-輕軌</h4>
+                    <li> <mark>淡海輕軌綠山線</mark>
+                        <br>紅樹林站 - 竿蓁林站 - 淡金鄧公站 - 淡江大學站 - 淡金北新站 - 新市一路站 - 淡水行政中心站 - 濱海義山站 - 濱海沙崙站 - 淡海新市鎮站 - 崁頂站
+                    </li>
+                    <li> <mark>淡海輕軌藍海線第一期</mark>
+                        <br>淡水漁人碼頭站 - 沙崙站 - 台北海洋大學站
+                    </li>
+                </ul>
+            </div>
+            <div class="row bg-dark">
+                <div class="col ms-3 mt-2" id="map">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 
         $(document).ready(function () {
+
             let apiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdLK_67-9JhkMDBVfREV0rBbhqorwxzLk&callback=initMap';
 
             // 當視窗大小改變時重新計算影片高度
@@ -267,25 +414,6 @@
                     console.error('無法載入 Google Maps API。');
                 });
 
-            $(".nav-link").click(function () {
-                let url = $(this).data('url')
-                // console.log(url);
-                $.get(url + ".html", (res) => {
-                    $(".nav-link").removeClass('active')
-                    $(this).addClass('active')
-                    $(".display").eq(0).html(res)
-                    if (url == 'map') {
-                        $('#map').css('display', 'block')
-                    } else {
-                        $('#map').css('display', 'none')
-                    };
-                })
-
-            });
-
-            $.get("default.html", (res) => {
-                $(".display").eq(0).html(res)
-            });
         });
 
         function initMap() {
@@ -302,13 +430,7 @@
                 map: map,
                 title: '標記標題'
             });
-
-
-
         }
-
-
-
     </script>
 </body>
 
