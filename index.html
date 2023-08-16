@@ -370,11 +370,18 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.3/pako.min.js"></script>
     <script>
 
         $(document).ready(function () {
 
             let apiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdLK_67-9JhkMDBVfREV0rBbhqorwxzLk&callback=initMap';
+            let session;
+            let now = new Date();
+            let setDate;
+            let DateTime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+            // console.log(DateTime);
+            sky();
 
             // 當視窗大小改變時重新計算影片高度
             $(window).on('resize', function () {
@@ -416,7 +423,7 @@
 
         });
 
-        function initMap() {
+        function initMap(lat, lng) {
             // 建立一個地圖物件，設定中心座標和縮放等級
             let map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 25.1682, lng: 121.4434 },
@@ -424,13 +431,33 @@
                 mapTypeId: 'terrain'
             });
 
-            // 新增一個標記到地圖上
-            let marker = new google.maps.Marker({
-                position: { lat: 25.0374865, lng: 121.5647688 },
-                map: map,
-                title: '標記標題'
-            });
         }
+        let url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=CWB-0603E1B3-359E-46CD-9E3F-81F7ADE1BABD&format=JSON&locationName=%E6%B7%A1%E6%B0%B4%E5%8D%80';
+
+
+
+        function sky() {
+
+            $.getJSON(url,
+                function (data) {
+                    // console.log(data.records.locations[0].location[0].weatherElement[3].time);
+                    session = data.records.locations[0].location[0].weatherElement[3].time
+                    $.each(session, function (indexInArray, valueOfElement) { 
+
+                        dateTime=new Date(valueOfElement.dataTime)
+                        // console.log(dateTime);
+                        now = new Date()
+                        if( now < dateTime){
+                        console.log(now);
+                        console.log(dateTime);
+                            return dateTime;
+                            
+                        }
+                    });
+                }
+            );
+        }
+
     </script>
 </body>
 
