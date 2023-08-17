@@ -344,7 +344,13 @@
     </div>
 
     <div class="container">
-        <div class="day" style="display: flex;flex-wrap: wrap;position: relative;left: 25px;padding: 20px 0 ;">
+        <div class="row">
+            <div class="col">
+                <canvas class="rounded" id="temperatureChart"
+                    style="background:linear-gradient( #fc8888e8 0%,#f5fdff 40%,#ffffff 70%,rgb(10, 153, 255) 100%);margin: 30px;"></canvas>
+                    <div class="col day" style="display: flex;flex-wrap: wrap;padding: 25px;">
+                    </div>
+            </div>
         </div>
     </div>
 
@@ -377,15 +383,13 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script>
 
+    <script>
         $(document).ready(function () {
             let apiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCfbY9xazVPQPGC4GY9Co8dk-N0l8XMxR0&callback=initMap';
             let now = new Date();
-
-            sky();
 
             // 當視窗大小改變時重新計算影片高度
             $(window).on('resize', function () {
@@ -443,7 +447,8 @@
         function sky() {
             $.getJSON(url,
                 function (data) {
-
+                    let timeData = [];
+                    let temperatureData = [];
                     let count = 0;
                     let session = data.records.locations[0].location[0].weatherElement[3].time;
 
@@ -455,23 +460,25 @@
                             count++;
 
                             // console.log(session[indexInArray - 1].dataTime);
-                            let row = session[indexInArray - 1];
+                            let row = session[indexInArray - 1].elementValue[0].value;
                             // console.log(row);
 
                             $("#tmp").text(row)
 
                             let weekTmp = '';
 
-                            for (let i = indexInArray; i < session.length-1; i++) {
+                            for (let i = indexInArray; i < session.length - 1; i++) {
 
                                 weekTmp += `
                                         <div class="card text-center m-1"  style="width:100px">
                                             <div class="card-header">${formatDateTime(session[i].dataTime)}</div>
                                             <div class="card-body">${session[i].elementValue[0].value}度</div>
                                         </div>`;
+                                timeData.push(formatDateTime(session[i].dataTime));
+                                temperatureData.push(session[i].elementValue[0].value);
                             }
-                            console.log(weekTmp);
                             $(".day").html(weekTmp)
+                            createChart(timeData, temperatureData);
                         }
                     });
                 }
@@ -486,8 +493,48 @@
             let day = date.getDate().toString().padStart(2, '0');
             let hour = date.getHours().toString().padStart(2, '0');
 
-            return month + '/' + day + '<br>' + hour + '時';
+            return month + '/' + day + '-' + hour + '時';
         }
+
+        function createChart(timeData, temperatureData) {
+            const ctx = document.getElementById('temperatureChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line', // 圖表類型
+                data: {
+                    labels: timeData, // 橫坐標數據 (時間)
+                    datasets: [{
+                        label: '氣溫 (℃)', // 圖表的標籤
+                        data: temperatureData, // 縱坐標數據 (氣溫)
+                        borderColor: 'red', // 線條顏色
+                        backgroundColor: 'rgba(0, 123, 255, 0.15)', // 設定淺色底
+                        fill: true // 是否填充圖表下方的區域
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'category', // 定義橫坐標為時間
+                            title: {
+                                display: true,
+                                text: '時間'
+                            }
+                        },
+                        y: {
+                            min: 20, // 設定 Y 軸最小值
+                            max: 35, // 設定 Y 軸最大值
+                            title: {
+                                display: true,
+                                text: '氣溫 (℃)'
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        sky();
+
     </script>
 </body>
 
