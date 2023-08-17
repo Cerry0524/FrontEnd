@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <style>
         body {
+            box-sizing: border-box;
             background-image: linear-gradient(20deg, #2b5876 0%, #4e4376 60%, black 80%);
             transition: background-color 1s;
             position: relative;
             font-family: "微軟正黑體", "Microsoft JhengHei UI";
-            overflow-x: hidden;
+            /* overflow-x: hidden; */
+            width: 97.1vw;
         }
-
 
         #video-background {
             position: absolute;
@@ -26,6 +27,7 @@
             left: 0;
             overflow: hidden;
             z-index: -1;
+
         }
 
         #video-background iframe {
@@ -97,13 +99,49 @@
             justify-content: center;
             align-items: center;
         }
-        .card:nth-child(odd){
-            background:blanchedalmond;
+
+        .day {
+            position: relative;
+            display: flex;
+            overflow: auto;
+            width: 100%;
+        }
+
+        .card {
+            flex-shrink: 0;
+            width: 100px;
+        }
+
+        .card:nth-child(odd) {
+            background: blanchedalmond;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #64eaddcd;
+            border-radius: 30px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #5331d8b1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #0d06dba3;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 30px;
         }
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="510">
+<body data-bs-spy="scroll" data-bs-target=".navbar-nav" data-bs-offset="50">
     <div id="video-background">
         <iframe
             src="https://www.youtube.com/embed/jMC8NyDSURU?controls=0&autoplay=1&loop=1&playlist=jMC8NyDSURU&mute=1&showinfo=0"
@@ -112,7 +150,7 @@
             allowfullscreen></iframe>
     </div>
 
-    <div class="container-fulid">
+    <div class="container-fulid mb-3">
         <div class="row title text-light">
             <div class="col navbar-brand fw-bold">山與海的界線
             </div>
@@ -145,7 +183,7 @@
         </div>
     </nav>
 
-    <div class="container mt-3" id="section1">
+    <div class="container mt-5" id="section1">
         <div class="row  row-cols-md-2 row-cols-1 display ">
             <div class="col text-light textbg lh-base">
                 淡水是個擁有400年歷史城鎮，古時候叫「滬尾」，今天稱淡水乃是因淡水河而來。<br>
@@ -159,7 +197,7 @@
         </div>
     </div>
 
-    <div class="container mt-3" id="section2">
+    <div class="container mt-5" id="section2">
         <div class="row  row-cols-md-2 row-cols-1 display ">
             <div class="col text-light lh-base mt-5" style="backdrop-filter: blur(20px);">
                 <h3>滬尾與淡水</h3>
@@ -191,7 +229,6 @@
         </div>
     </div>
 
-    <!-- Carousel -->
     <div class="container-fulid mt-3">
         <div class="row">
             <div class="col-12 mt-3 mb-5">
@@ -351,13 +388,13 @@
             <div class="col">
                 <canvas class="rounded" id="temperatureChart"
                     style="background:linear-gradient( #fc8888e8 0%,#f5fdff 40%,#ffffff 70%,rgb(10, 153, 255) 100%);margin: 30px;"></canvas>
-                    <div class="col day" style="display: flex;flex-wrap: wrap;padding: 25px;">
-                    </div>
+                <div class="col day">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container" id="section4">
+    <div class="container mt-3 mb-4" id="section4">
         <div class="row row-cols-md-2 row-cols-1">
             <div class="col text-light textbg lh-base">
                 <h2>捷運</h2>
@@ -404,22 +441,22 @@
                 $('#video-background').css('height', windowHeight + 'px');
             }
 
-            adjustVideoHeight(); // 初始化影片高度
+            adjustVideoHeight();
 
             $(window).scroll(function () {
-                // 計算卷軸滾動的距離
+
                 let scrollPosition = $(window).scrollTop();
-                // 計算觸發點的位置（例如視窗高度的一半）
+
                 let triggerPosition = $(window).height() / 2;
 
                 if (scrollPosition > triggerPosition) {
-                    // $('body').css('background-color', 'white');
-                    $('#video-background').hide(); // 隱藏影片背景
+
+                    $('#video-background').hide();
                     $('.navbar').css('background-color', ' rgba(0, 0, 0, 1)');
 
                 } else {
-                    // $('body').css('background-color', 'black'); 
-                    $('#video-background').show(); // 顯示影片背景
+
+                    $('#video-background').show();
                     $('.navbar').css('background-color', ' rgba(0, 0, 0, 0.5)');
                 }
             });
